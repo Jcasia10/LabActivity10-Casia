@@ -16,7 +16,7 @@ class PostController extends Controller
             ->when($request->filled('category'), fn ($query) => $query->where('category', $request->string('category')))
             ->orderByDesc('is_pinned')
             ->latest('published_at')
-            ->paginate(5)
+            ->paginate(6)
             ->withQueryString();
 
         $categories = Post::query()->distinct()->orderBy('category')->pluck('category');
